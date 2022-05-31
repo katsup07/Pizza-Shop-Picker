@@ -93,6 +93,8 @@ html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  background: url("./images/double-trouble.jpg");
+  background-size: cover;
 }
 a:focus {
   outline: thin dotted;
@@ -182,6 +184,10 @@ button[disabled],
 input[disabled] {
   cursor: default;
 }
+
+form button {
+  font-family: courier;
+}
 input[type=checkbox],
 input[type=radio] {
   box-sizing: border-box;
@@ -228,7 +234,7 @@ html {
   font-size: 62.5%;
 }
 body {
-  background: #feb27e;
+  background: #feb17e00;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Open Sans', sans-serif;
@@ -433,7 +439,7 @@ ul.order li span.count span {
 .order-title {
   text-align: center;
 }
-.fish-edit {
+.pizza-edit {
   margin-bottom: 20px;
   border: 2px solid #000;
   overflow: hidden;
@@ -441,9 +447,9 @@ ul.order li span.count span {
   display: flex;
   flex-wrap: wrap;
 }
-.fish-edit input,
-.fish-edit textarea,
-.fish-edit select {
+.pizza-edit input,
+.pizza-edit textarea,
+.pizza-edit select {
   width: 33.33%;
   padding: 10px;
   line-height: 1;
@@ -451,27 +457,38 @@ ul.order li span.count span {
   border: 0;
   border-bottom: 1px solid #000;
   border-right: 1px solid #000;
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
   border-radius: 0;
   background: #fff;
 }
-.fish-edit input:focus,
-.fish-edit textarea:focus,
-.fish-edit select:focus {
+.pizza-edit input:focus,
+.pizza-edit textarea:focus,
+.pizza-edit select:focus {
   outline: 0;
   background: #fef2de;
 }
-.fish-edit textarea {
+.pizza-edit textarea {
   width: 100%;
+  border: 1px solid black;
 }
-.fish-edit input:last-of-type {
-  width: 100%;
+
+.pizza-toppings {
+  display: flex;
+ font-size: 1.2rem;
 }
-.fish-edit button {
+.pizza-edit button {
   width: 100%;
   border: 0;
+  border: 1px solid black;
+}
+
+.pizza-edit p{
+  font-size: 1.2rem;
+  padding: 5px;
+  margin: 0;
+}
+.pizza-edit div{
+  font-size: 1.2rem;
+  margin: 3px;
 }
 .list-of-fish {
   border-top: 2px solid #000;
@@ -517,7 +534,7 @@ button,
 input[type=submit] {
   text-transform: uppercase;
   background: none;
-  border: 1px solid #000;
+  border: 2px solid #000;
   font-weight: 600;
   font-size: 1.5rem;
   font-family: 'Open Sans';
@@ -548,7 +565,7 @@ input[type=submit]:after {
   content: '';
   z-index: -1;
   display: block;
-  background: #000;
+  background: rgb(219, 53, 53);
   position: absolute;
   width: 100%;
   height: 0;
@@ -561,7 +578,7 @@ button:hover,
 input[type=submit]:hover,
 button:focus,
 input[type=submit]:focus {
-  color: #fff;
+  color: rgb(255, 255, 255);
   outline: 0;
 }
 button:hover:after,
