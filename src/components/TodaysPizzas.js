@@ -15,7 +15,7 @@ function TodaysPizzas(props){
       <span className="price">{formatPrice(price)}</span>
     </h3>
     <p>{desc}</p>
-    <button>Add to Cart</button>
+    <button onClick={() => props.addPizzaToOrder(props.pizzaKey)}>Add to Order</button>
   </li>
 
   );

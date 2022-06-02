@@ -14,15 +14,34 @@ class App extends React.Component {
     order: {},
   };
 
-  // sync with firebase
+  
   componentDidMount = () => {
+    console.log('it mounted')
+    //reinstate local storage
     const { params } = this.props.match;
-    console.log(params.storeId);
-    const ref = base.syncState(`${params.storeId}/pizzas`, { 
+    //set reference, get localStorage save data, and save it to state
+    const localStorageRef = localStorage.getItem(params.storeId);
+    if(localStorageRef) this.setState({order: JSON.parse(localStorageRef)})
+    // sync with firebase
+    this.ref = base.syncState(`${params.storeId}/pizzas`, { 
       context: this, 
       state: 'pizzas',
     });
   };
+
+  componentDidUpdate() {
+    console.log('it updated', this.state.order);
+    // setItem(keyName, keyValue) are the params. Saves order info in local storage.
+    localStorage.setItem(this.props.match.params.storeId, JSON.stringify(this.state.order));
+
+  }
+
+  // clean up after leaving store. could lead to memory leak if you don't unmount when leaving store
+  componentWillUnmount() {
+    console.log('it unmounted')
+    base.removeBinding(this.ref);
+  }
+
 
   // Adds pizzas to state
    addPizza = (pizza) => {
@@ -35,11 +54,26 @@ class App extends React.Component {
     this.setState({ pizzas: updatePizzas })
   }
 
+  addPizzaToOrder = (pizzaKey) => {
+    console.log('adding pizza to order...', pizzaKey);
+    const updateOrder = {...this.state.order};
+    updateOrder[pizzaKey] = updateOrder[pizzaKey]+1 || 1;
+    this.setState({ order: updateOrder })
+  }
+
+  deletePizzaFromOrder = (pizzaKey) => {
+    const updateOrder = {...this.state.order};
+    console.log("Deleting pizza from order", updateOrder[pizzaKey]);
+    delete updateOrder[pizzaKey];
+    this.setState({order: updateOrder})
+  }
+
   loadSamplePizzas = () => {
     this.setState({ pizzas: samplePizzas })
   }
 
   render () {
+  
   return(
   <div className="todays-pizzas">
     <div className="menu">
@@ -49,13 +83,18 @@ class App extends React.Component {
         <TodaysPizzas key={pizzaKey}
         pizzaKey= {pizzaKey}
         details = {this.state.pizzas[pizzaKey]} 
+        addPizzaToOrder={this.addPizzaToOrder}
         />
        )
       }
       </ul>
     </div>
     <div>
-      <Order/>
+      <Order
+      pizzas={this.state.pizzas}
+      order={this.state.order}
+      deletePizzaFromOrder={this.deletePizzaFromOrder}
+      />
     </div>
     <div>
       <Create addPizza={this.addPizza} loadSamplePizzas={this.loadSamplePizzas}/>

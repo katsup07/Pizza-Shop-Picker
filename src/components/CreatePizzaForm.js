@@ -11,7 +11,6 @@ function CreatePizzaForm(props){
   const priceRef = React.createRef();
   const toppings = {};
   let pizza = {};
-  console.log(pizza);
   
   // Creates a pizza in pizza = {} with form data
   function createPizza(e){

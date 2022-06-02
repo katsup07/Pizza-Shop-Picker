@@ -3,9 +3,8 @@ const samplePizzas = {
   pizza1: {
     name: "Fresh Mozzarella",
     image: "/images/fresh-mozzarella.jpg",
-    desc:
-      "Simple and delicious. Our number 2 best seller."
-    price: 1724,
+    desc: "Simple and delicious. Our number 2 best seller.",
+    price: 2500,
     status: "available"
   },
 
@@ -13,17 +12,17 @@ const samplePizzas = {
     name: "Margherita",
     image: "/images/margherita.jpg",
     desc:
-      "This tangy, mouth-watering classic will bring a smile to you stomach."
-    price: 3200,
+      "This tangy, mouth-watering classic is sure to bring a smile to your stomach.",
+    price: 2200,
     status: "available"
   },
 
   pizza3: {
-    name: "Extra Crispy",
+    name: "Super Suicide",
     image: "/images/extra-crispy.jpg",
     desc:
-      "Cooked until slightly burnt and crispy. It doesn't look pretty, but it's our number 1 best seller. Will you dare to try it?",
-    price: 1684,
+      "Please proceed with caution and get the milk ready.",
+    price: 2400,
     status: "unavailable"
   },
 
@@ -32,7 +31,7 @@ const samplePizzas = {
     image: "/images/mushroom.jpg",
     desc:
       "A healthy pizza loaded with freshly picked mushroom from the local forest!!",
-    price: 1129,
+    price: 2250,
     status: "available"
   },
 
@@ -41,7 +40,7 @@ const samplePizzas = {
     image: "/images/pepperoni.jpg",
     desc:
       "Juicy and spicy pepperoni on a soft crust, flourished with plenty of cheddar and mozarella.",
-    price: 4234,
+    price: 2100,
     status: "available"
   },
 
@@ -50,7 +49,7 @@ const samplePizzas = {
     image: "/images/egg.jpg",
     desc:
       "Eggs on pizza? Yes. Think eggs and cheese. Yummy, right? Try this new pizza innovation.",
-    price: 1453,
+    price: 2500,
     status: "available"
   },
 
@@ -58,7 +57,7 @@ const samplePizzas = {
     name: "Vegetarian",
     image: "/images/vegetarian.jpg",
     desc: "Fresh, healthy, and packed full of vitamins and nutrients. Sold from morning until evening.",
-    price: 2543,
+    price: 2450,
     status: "available"
   },
 
@@ -67,7 +66,7 @@ const samplePizzas = {
     image: "/images/variety.jpg",
     desc:
       "Can't decide on a pizza? Choose any four types and combine them.",
-    price: 425,
+    price: 2400,
     status: "available"
   },
 
@@ -75,8 +74,8 @@ const samplePizzas = {
     name: "Double Trouble",
     image: "/images/double-trouble.jpg",
     desc:
-      "The name says it all. You'll love this trouble. One pizza is sweet and the other is spicy.",
-    price: 2250,
+      "The name says it all. You'll love this trouble. Two small pizzas - one pizza is sweet and the other is spicy.",
+    price: 3000,
     status: "available"
   }
 };
