@@ -5,6 +5,7 @@ function Toppings(props){
   function addToppings(e){
     console.dir(e.target);
     const topping = e.target.name;
+    console.log(topping);
     // if topping is checked, add to toppings object
     if(e.target.checked) return props.toppings[topping] = true;
     // else the topping has been unchecked, so delete from toppings object
@@ -15,8 +16,8 @@ function Toppings(props){
   <div className="pizza-toppings" onChange={addToppings}>
     <div>
      
-        <label > 
-          <input type="checkbox" name="pepperoni" defaultValue="pepperoni" />pepperoni
+        <label> 
+          <input type="checkbox" name="pepperoni" defaultValue="pepperoni"/>pepperoni
         </label>
         <label>
           <input type="checkbox" name="mushrooms" defaultValue="mushrooms"/>mushrooms

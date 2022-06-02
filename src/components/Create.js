@@ -6,7 +6,10 @@ function Create(props){
       <>
         <h2>Create</h2>
         <CreatePizzaForm addPizza={props.addPizza}/>
-        <CreatePizzaForm addPizza={props.addPizza}/>
+        <button 
+          onClick={props.loadSamplePizzas}>
+            Load Sample Pizzas
+        </button>
       </>
   );
 }

@@ -4,50 +4,63 @@ import { formatPrice } from '../helpers.js'
 
 function CreatePizzaForm(props){
 
-  const pizzaNameRef = React.createRef();
+  const nameRef = React.createRef();
   const promoCodeRef = React.createRef();
   const crustTypeRef = React.createRef();
-  const descriptionRef = React.createRef();
-  const totalRef = React.createRef();
+  const descRef = React.createRef();
+  const priceRef = React.createRef();
   const toppings = {};
   let pizza = {};
+  console.log(pizza);
   
-  // Creates a pizza in pizza = {}
+  // Creates a pizza in pizza = {} with form data
   function createPizza(e){
     console.log(e);
     console.log("Creating a pizza!");
     pizza = {
-      pizzaName: pizzaNameRef.current.value,
+      name: nameRef.current.value,
       promoCode: promoCodeRef.current.value,
       crustType: crustTypeRef.current.value,
-      description: descriptionRef.current.value,
-      total: totalRef.current.value,
+      desc: descRef.current.value,
+      price: priceRef.current.value,
       toppings: toppings, // An object with the chosen toppings
     }
     console.log(pizza);
-    // updates cost of pizza
+   
     updateTotalPrice();
   }
 
+  // updates cost of pizza during creation
   function updateTotalPrice(){
     const numberOfToppings = Object.keys(pizza.toppings).length;
-    totalRef.current.innerText = `Total: ${ formatPrice(2000 + numberOfToppings * 50) }`;
-    pizza.total = 2000 + numberOfToppings * 50;
-
-  /*   ( pizza.toppings ? Object.keys(pizza.toppings).length*50: 0) */
+    // update total on form
+    priceRef.current.innerText = `Total: ${ 2000 + numberOfToppings * 50 }`;
+    // set pizza total in pizza object
+    pizza.price = 2000 + numberOfToppings * 50;
   }
 
-  // updates pizza data in state
+  // updates pizza data in state when form is submitted
   function updatePizzaState(e){
-    e.preventDefault();
+    console.log(e.currentTarget)
+    // Need to read in pizza form data again, since reset clears info from all form objects
+   /*  createPizza(); */
     props.addPizza(pizza);
-    console.log("adding!")
+    /* resetForm(e.currentTarget) */
   }  
 
+/*   function resetForm(el) {
+    el.reset();
+    console.log(toppings);
+    priceRef.current.innerText = `Total: ${ formatPrice(2000) }`;
+    Object.keys(toppings).forEach( key => delete toppings[key]);
+    console.log(toppings);
+
+  } */
+
   return(
-  <form onSubmit={updatePizzaState}>
+  <form onSubmit={updatePizzaState} autoComplete="off">
   <div className="pizza-edit" onChange={createPizza}>
-    <input type="text" name="pizza-name" ref={pizzaNameRef} placeholder="pizza name"/>
+    <input type="text" name="pizza-name" ref={nameRef} placeholder="pizza name"/>
     <input type="text" name="promo-code" ref={promoCodeRef} placeholder="promo code"/>
     <select  name="crust-type" ref={crustTypeRef}>
       <option value="normal">normal</option>
@@ -55,8 +68,8 @@ function CreatePizzaForm(props){
       <option value="thin-crust">thin crust</option>
     </select>
     <Toppings toppings={toppings}/>
-    <textarea name="description" ref={descriptionRef} placeholder="description"/>
-    <p ref={totalRef}>Total: {formatPrice(2000)}</p>
+    <textarea name="description" ref={descRef} placeholder="description"/>
+    <p ref={priceRef}>Total: {2000}</p>
     <button type="submit">+ Add Pizza</button>
     </div>
   </form>
